@@ -9,7 +9,6 @@ public class ToyStore {
 //    private final Map<String, Toy> toyList = new HashMap<>();
     private List<Toy> toyList;
 
-    private List<Toy> raffleToys;
 
     public ToyStore(List<Toy> toys){
         this.toyList = toys;
@@ -70,18 +69,12 @@ public class ToyStore {
         }
     }
 
- //   public void printToys(ToyStore toys) {
- //       for (Toy toy : toys) {
- //           System.out.println("index:" + i + " => " + toys.get(i));
-//        }
- //   }
-
     public Toy getRiffleToy() {
         RaffleToy random = new RaffleToy();
-        return random.raffleToy(raffleToys);
+        return random.raffleToy(toyList);
     }
 
-    public void saveRiffleToy() {
+    public void saveRiffleToy(List<Toy> prizeToy) {
         Toy toy = getRiffleToy();
         String text = toy.toString();
         try (FileWriter writer = new FileWriter("./src/Toys.txt", true)) {
@@ -92,7 +85,8 @@ public class ToyStore {
 
             System.out.println(ex.getMessage());
         }
-        raffleToys.remove(toy);
+
+        prizeToy.remove(toy);
     }
 
 }

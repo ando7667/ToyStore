@@ -15,4 +15,5 @@ public class RaffleToy {
         }
         throw new RuntimeException("Нечего показывать.");
     }
+
 }
