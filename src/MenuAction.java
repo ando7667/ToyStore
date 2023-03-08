@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class MenuAction {
 
@@ -39,7 +40,15 @@ public class MenuAction {
         int count = inputInt("Введите количество разыгрываемых игрушек:");
         for (int i = count; i > 0; i--) {
             Toy toy = toys.getRiffleToy();
-            prizeToy.add(toy);
+            int amount = toy.getAmount();
+            int id = toy.getIdToy();
+//            int index = toys.searchIndexToy(id);
+            if(amount >= 1) {
+                amount--;
+                toys.changeAmountToy(id, amount);
+                toy.setAmount(amount);
+                prizeToy.add(toy);
+            }
         }
     }
 
@@ -50,7 +59,10 @@ public class MenuAction {
     }
 
     public void takePrizeToy(ToyStore toys, List<Toy> prizeToy) {
-
+         int count = inputInt("Введите количество игрушек для выдачи:");
+         for (int i = count; i>0;i--) {
+             toys.saveRiffleToy(prizeToy);
+         }
     }
     public void outputIssuedToys() {
 

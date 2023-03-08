@@ -41,6 +41,10 @@ public class ToyStore {
         Toy toy = getToy(searchIndexToy(id));
         toy.setChanceFalling(chance);
     }
+    public void changeAmountToy(int id, int amount) {
+        Toy toy = getToy(searchIndexToy(id));
+        toy.setAmount(amount);
+    }
 
     public Toy searchToy(int codeIsIn) {
             for(Toy toy : toyList) {
@@ -75,7 +79,7 @@ public class ToyStore {
     }
 
     public void saveRiffleToy(List<Toy> prizeToy) {
-        Toy toy = getRiffleToy();
+        Toy toy = prizeToy.get(0);
         String text = toy.toString();
         try (FileWriter writer = new FileWriter("./src/Toys.txt", true)) {
             writer.write(text);
@@ -85,9 +89,7 @@ public class ToyStore {
 
             System.out.println(ex.getMessage());
         }
-
         prizeToy.remove(toy);
     }
-
 }
 
