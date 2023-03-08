@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Menu {
     private static Scanner scanner = new Scanner(System.in);
-    private int action; // опреция над числами
+    private int action;
 
     public Menu() {
         this.action = 0;
@@ -13,7 +13,7 @@ public class Menu {
         return action;
     }
 
-    // массив строк меню выбора опреции над числами
+    // массив строк меню выбора опреции c игрушками
     private String[] arr_action = new String[]{
             "Выход",
             "Разыграть призовые игрушки",
@@ -21,7 +21,7 @@ public class Menu {
             "Вывод списка призовых игрушек",
             "Вывод списка выданных игрушек",
             "Добавить новую игрушку",
-            "Изменить шанс выпадения игрушки"
+            "Изменить шанс выпадения игрушки",
     };
 
     // вывод массива строк на экран в виде меню

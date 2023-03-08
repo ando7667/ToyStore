@@ -27,6 +27,10 @@ public class ToyStore {
         toy.setAmount(amount);
         toy.setChanceFalling(chance);
     }
+    public void changeToy(String id, String chance) {
+        Toy toy = getToy(id);
+        toy.setChanceFalling(chance);
+    }
 
     private void removeToy(String id) {
         toyList.remove(id);
