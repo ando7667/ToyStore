@@ -1,8 +1,10 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuAction {
 
     private static Scanner inputUser = new Scanner(System.in);
+
     public void selectAction(int action, ToyStore toys) {
 
         switch (action) {
@@ -48,36 +50,32 @@ public class MenuAction {
         if (name == null || name.length() > 30) {
             System.out.println("Ошибка ввода");
         }
-        System.out.println("Введите количество этой игрушки");
-        String amount = inputUser.nextLine();
-        if (amount == null || amount.length() > 30) {
-            System.out.println("Ошибка ввода");
-        }
-        String chance = inputChance();
+
+        int amount = inputInt("Введите количество этой игрушки");
+        int chance = inputInt("Введите шанс выпадения игушки:");
         toys.addToy(name, amount, chance);
     }
 
     public void changeChanceToy(ToyStore toys) {
-        String id = inputIdToys();
-        String chance = inputChance();
+        int id = inputInt("Введите ид игрушки:");
+        int chance = inputInt("Введите шанс выпадения игушки:");
         toys.changeToy(id, chance);
     }
 
-    public String inputIdToys() {
-        System.out.println("Введите id игрушки");
-        String id = inputUser.nextLine();
-        if (id == null || id.length() > 10) {
-            System.out.println("Ошибка ввода");
+
+    // ввод целого числа
+    public int inputInt(String str) {
+        System.out.println(str);
+        int num;
+        if (inputUser.hasNextInt()) {
+            num = inputUser.nextInt();
+        } else {
+            System.out.println("Вы допустили ошибку при вводе числа. Попробуйте еще раз.");
+            inputUser.next();
+            //рекурсия
+            num = inputInt(str);
         }
-        return id;
+        return num;
     }
 
-    public String inputChance() {
-        System.out.println("Введите шанс выпадения игушки:");
-        String chance = inputUser.nextLine();
-        if (chance == null || chance.length() > 10) {
-            System.out.println("Ошибка ввода");
-        }
-        return chance;
-    }
 }

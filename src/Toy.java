@@ -1,31 +1,34 @@
 public class Toy {
-    String idToy;
-    String nameToy;
-    String amount;
-    String chanceFalling;
+    private int idToy;
+    private String nameToy;
+    private int amount;
+    private int chanceFalling;
 
-    public Toy(String id, String name) {
-        this(id, name, "1", "1");
+    public Toy(int id, String name) {
+        this(id, name, 1, 1);
     }
 
-    public Toy(String id, String name, String amount, String chance) {
-        if (id == null || id.length() > 10) {
-            throw new IllegalArgumentException("invalid idToy");
-        }
-        if (name == null || name.length() > 30) {
-            throw new IllegalArgumentException("invalid nameToy");
-        }
-        if (amount == null || amount.length() > 10) {
-            throw new IllegalArgumentException("invalid amount");
-        }
-        if (chance == null || chance.length() > 3) {
-            chance = "100";
-        }
+    public Toy(int id, String name, int amount, int chance) {
+//        if (id == null || id.length() > 10) {
+//            throw new IllegalArgumentException("invalid idToy");
+//        }
+//        if (name == null || name.length() > 30) {
+//            throw new IllegalArgumentException("invalid nameToy");
+//        }
+//        if (amount == null || amount.length() > 10) {
+//            throw new IllegalArgumentException("invalid amount");
+//        }
+//        if (chance == null || chance.length() > 3) {
+//            chance = "100";
+//        }
 
         this.idToy = id;
         this.nameToy = name;
         this.amount = amount;
         this.chanceFalling = chance;
+    }
+    public int getIdToy() {
+        return idToy;
     }
 
     public String getNameToy() {
@@ -36,19 +39,19 @@ public class Toy {
         this.nameToy = name;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
-    public String getChanceFalling() {
+    public int getChanceFalling() {
         return chanceFalling;
     }
 
-    public void setChanceFalling(String chance) {
+    public void setChanceFalling(int chance) {
         this.chanceFalling = chance;
     }
 

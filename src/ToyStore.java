@@ -1,42 +1,99 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 public class ToyStore {
 
-    int idToy = 0;
+    int idToy = 1;
     //инициализируем список игрушек
-    private final Map<String, Toy> toyList = new HashMap<>();
+//    private final Map<String, Toy> toyList = new HashMap<>();
+    private List<Toy> toyList;
+
+    private List<Toy> raffleToys;
+
+    public ToyStore(List<Toy> toys){
+        this.toyList = toys;
+    }
+
+
 
     // получить запись игрушки из списка игрушек
-    public Toy getToy(String id) {
+    public Toy getToy(int id) {
         return toyList.get(id);
     }
 
     // добавление игрушки к списку
-    public Toy addToy(String name, String amount, String chance) {
+    public Toy addToy(String name, int amount, int chance) {
         idToy++;
-        String id = Integer.toString(idToy);
+        int id = idToy;
         Toy toy = new Toy(id, name, amount, chance);
-        return toyList.put(id, toy);
+        toyList.add(toy);
+        return toy;
     }
 
-    public void changeToy(String id, String name, String amount, String chance) {
+    public void changeToy(int id, String name, int amount, int chance) {
         Toy toy = getToy(id);
         toy.setNameToy(name);
         toy.setAmount(amount);
         toy.setChanceFalling(chance);
     }
-    public void changeToy(String id, String chance) {
-        Toy toy = getToy(id);
+
+    public void changeToy(int id, int chance) {
+        Toy toy = getToy(searchIndexToy(id));
         toy.setChanceFalling(chance);
     }
 
-    private void removeToy(String id) {
+    public Toy searchToy(int codeIsIn) {
+            for(Toy toy : toyList) {
+                if(toy.getIdToy() == codeIsIn) {
+                    return toy;
+                }
+            }
+            return null;
+    }
+
+    public int searchIndexToy(int codeIcIn) {
+        int index = -1;
+        for (Toy toy : toyList) {
+            if (toy.getIdToy() == codeIcIn) index = toyList.indexOf(toy);
+        }
+        return index;
+    }
+
+    private void removeToy(int id) {
         toyList.remove(id);
     }
 
     public void printToys() {
-        toyList.forEach((key, value) -> System.out.println(key + " => " + value));
+        for (int i = 0; i < toyList.size(); i++) {
+            System.out.println("index:" + i + " => " + toyList.get(i));
+        }
     }
+
+ //   public void printToys(ToyStore toys) {
+ //       for (Toy toy : toys) {
+ //           System.out.println("index:" + i + " => " + toys.get(i));
+//        }
+ //   }
+
+    public Toy getRiffleToy() {
+        RaffleToy random = new RaffleToy();
+        return random.raffleToy(raffleToys);
+    }
+
+    public void saveRiffleToy() {
+        Toy toy = getRiffleToy();
+        String text = toy.toString();
+        try (FileWriter writer = new FileWriter("./src/Toys.txt", true)) {
+            writer.write(text);
+            writer.append('\n');
+            writer.flush();
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        raffleToys.remove(toy);
+    }
+
 }
+
