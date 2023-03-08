@@ -5,14 +5,14 @@ public class Toy {
     String chanceFalling;
 
     public Toy(String id, String name) {
-        this(id,name,"1","1");
+        this(id, name, "1", "1");
     }
 
     public Toy(String id, String name, String amount, String chance) {
         if (id == null || id.length() > 10) {
             throw new IllegalArgumentException("invalid idToy");
         }
-        if (nameToy == null || nameToy.length() > 30) {
+        if (name == null || name.length() > 30) {
             throw new IllegalArgumentException("invalid nameToy");
         }
         if (amount == null || amount.length() > 10) {
@@ -28,8 +28,32 @@ public class Toy {
         this.chanceFalling = chance;
     }
 
+    public String getNameToy() {
+        return nameToy;
+    }
+
+    public void setNameToy(String name) {
+        this.nameToy = name;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getChanceFalling() {
+        return chanceFalling;
+    }
+
+    public void setChanceFalling(String chance) {
+        this.chanceFalling = chance;
+    }
+
     @Override
     public String toString() {
-        return "id: " + idToy + ", название: " + nameToy + ", количество: " + amount + ", шанс выпадения: " + chanceFalling + ";";
+        return "id:" + idToy + ", наименование:" + nameToy + ", количество:" + amount + ", шанс выпадения:" + chanceFalling + ";";
     }
 }

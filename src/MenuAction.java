@@ -2,14 +2,14 @@ import java.util.List;
 
 public class MenuAction {
 
-    public void selectAction(int action) {
+    public void selectAction(int action, ToyStore toys) {
 
         switch (action) {
             case 1:
                 RafflePrizeToys();
                 break;
             case 2:
-                DisplayingListToys();
+                toys.printToys();
                 break;
             case 3:
                 DisplayingPrizeToys();
