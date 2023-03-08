@@ -59,10 +59,12 @@ public class MenuAction {
     }
 
     public void takePrizeToy(ToyStore toys, List<Toy> prizeToy) {
-         int count = inputInt("Введите количество игрушек для выдачи:");
-         for (int i = count; i>0;i--) {
-             toys.saveRiffleToy(prizeToy);
-         }
+        if (!prizeToy.isEmpty()) {
+            int count = inputInt("Введите количество игрушек для выдачи:");
+            for (int i = count; i>0;i--) {
+                toys.saveRiffleToy(prizeToy);
+            }
+        }
     }
     public void outputIssuedToys() {
 
