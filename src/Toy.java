@@ -27,6 +27,7 @@ public class Toy {
         this.amount = amount;
         this.chanceFalling = chance;
     }
+
     public int getIdToy() {
         return idToy;
     }

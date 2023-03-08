@@ -42,8 +42,7 @@ public class MenuAction {
             Toy toy = toys.getRiffleToy();
             int amount = toy.getAmount();
             int id = toy.getIdToy();
-//            int index = toys.searchIndexToy(id);
-            if(amount >= 1) {
+            if (amount >= 1) {
                 amount--;
                 toys.changeAmountToy(id, amount);
                 toy.setAmount(amount);
@@ -54,18 +53,19 @@ public class MenuAction {
 
     public void printPrizeToys(List<Toy> prizeToy) {
         for (int i = 0; i < prizeToy.size(); i++) {
-           System.out.println("index:" + i + " => " + prizeToy.get(i));
+            System.out.println("index:" + i + " => " + prizeToy.get(i));
         }
     }
 
     public void takePrizeToy(ToyStore toys, List<Toy> prizeToy) {
         if (!prizeToy.isEmpty()) {
             int count = inputInt("Введите количество игрушек для выдачи:");
-            for (int i = count; i>0;i--) {
+            for (int i = count; i > 0; i--) {
                 toys.saveRiffleToy(prizeToy);
             }
         }
     }
+
     public void outputIssuedToys() {
 
     }

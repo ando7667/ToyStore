@@ -10,10 +10,9 @@ public class ToyStore {
     private List<Toy> toyList;
 
 
-    public ToyStore(List<Toy> toys){
+    public ToyStore(List<Toy> toys) {
         this.toyList = toys;
     }
-
 
 
     // получить запись игрушки из списка игрушек
@@ -41,18 +40,19 @@ public class ToyStore {
         Toy toy = getToy(searchIndexToy(id));
         toy.setChanceFalling(chance);
     }
+
     public void changeAmountToy(int id, int amount) {
         Toy toy = getToy(searchIndexToy(id));
         toy.setAmount(amount);
     }
 
     public Toy searchToy(int codeIsIn) {
-            for(Toy toy : toyList) {
-                if(toy.getIdToy() == codeIsIn) {
-                    return toy;
-                }
+        for (Toy toy : toyList) {
+            if (toy.getIdToy() == codeIsIn) {
+                return toy;
             }
-            return null;
+        }
+        return null;
     }
 
     public int searchIndexToy(int codeIcIn) {
